@@ -1,0 +1,9 @@
+{
+    "name": "TwelfStack",
+    "short_name": "twelfstack",
+    "theme_color": "#5fdb58",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/"
+  }

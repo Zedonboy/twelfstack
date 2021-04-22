@@ -1,65 +1,100 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from "react";
+import AuthorCard from "../components/AuthorCard";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Newsletter from "../components/Newsletter";
+import TestimonialSection from "../components/TestimonialSection";
+import Head from "next/head"
+const angle = [
+  {
+    name: "Erica Nlewedim",
+    photo:
+      "https://bbnaijadaily.com/wp-content/uploads/2020/07/Erica-BBNaija-2.jpg",
+    desc: "BBN Star",
+    verified: true,
+  },
+  {
+    name: "Don Jazzy",
+    photo:
+      "https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900https://netstorage-legit.akamaized.net/images/vllkytsf4r9248hqc.jpg?imwidth=900",
+    desc: "BBN Star",
+    verified: false,
+  },
+  {
+    name: "Funke Akindele",
+    photo:
+      "https://guardian.ng/wp-content/uploads/2020/07/images__01-640x360.jpg",
+    desc: "Hollywood Actress",
+    verified: false,
+  },
+  {
+    name: "Declan Nnadozie",
+    photo:
+      "https://pbs.twimg.com/profile_images/1359636165469614082/tZaML7rE_400x400.jpg",
+    desc: "Developer himself 🥳",
+    verified: true,
+  },
+];
 
-export default function Home() {
+export default function Index() {
   return (
-    <div className={styles.container}>
+    <section>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <meta name="description" content="Description" />
+        <meta name="keywords" content="Keywords" />
+        <title>Next.js PWA Example</title>
+
+        <link rel="manifest" href="/manifest.json" />
+        <link
+          href="/favicon-16x16.png"
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+        />
+        <link
+          href="/favicon-32x32.png"
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+        />
+        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
+        <meta name="theme-color" content="#317EFB" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <Hero />
+      <section className="bg-white flex flex-col dark:bg-gray-800 px-4 lg:px-9 mt-10">
+        <h1 className="text-2xl text-center tracking-tight font-bold text-gray-900 sm:text-3xl md:text-4xl">
+          <span className="block xl:inline">
+            Listen to.&nbsp;Read from.&nbsp;Vibe to.&nbsp;
+          </span>{" "}
+          <span className="block text-green-600">your Faves</span>
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
+        <section className="flex flex-wrap">
+          {angle.map((v, i) => (
+            <div key={i} className="p-2 w-full md:w-1/5">
+              <AuthorCard data={v} />
+            </div>
+          ))}
+        </section>
+        <div className="flex justify-center items-center">
           <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
+            href="/reads"
+            className="p-2 mt-4 text-green-300 hover:text-green-600 border border-green-300 hover:border-green-600 rounded flex items-center justify-center"
           >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+            More
           </a>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+      </section>
+      <TestimonialSection />
+      <section className="flex justify-center">
+        <Newsletter />
+      </section>
+      <Footer />
+    </section>
+  );
 }
