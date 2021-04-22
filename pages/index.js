@@ -48,7 +48,7 @@ export default function Index() {
         />
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
-        <title>Next.js PWA Example</title>
+        <title>TwelfStack</title>
 
         <link rel="manifest" href="/manifest.json" />
         <link
@@ -64,7 +64,7 @@ export default function Index() {
           sizes="32x32"
         />
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
-        <meta name="theme-color" content="#317EFB" />
+        <meta name="theme-color" content="#10B981" />
       </Head>
       <Hero />
       <section className="bg-white flex flex-col dark:bg-gray-800 px-4 lg:px-9 mt-10">
