@@ -10,11 +10,11 @@ export default function ComingSoon() {
         }}
         title="Woman holding a mug"
       ></div>
-      <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-2 flex flex-col justify-between leading-normal">
+      <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-navy-light rounded-b lg:rounded-b-none lg:rounded-r p-2 flex flex-col justify-between leading-normal">
         <div className="mb-8 opacity-50">
-          <p className="text-xs text-grey-dark flex items-center">
+          <p className="text-xs text-grat-300 flex items-center">
             <svg
-              className="text-grey w-3 h-3 mr-2"
+              className="text-gray-300 w-3 h-3 mr-2"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
             >
@@ -22,10 +22,10 @@ export default function ComingSoon() {
             </svg>
             Members only
           </p>
-          <div className="text-black font-bold text-base mb-2">
+          <div className="text-gray-300 font-bold text-base mb-2">
             Build Happy Life
           </div>
-          <p className="text-grey-darker text-sm">
+          <p className="text-gray-300 text-sm">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </p>
         </div>
@@ -38,9 +38,9 @@ export default function ComingSoon() {
           </a>
         </div>
       </div>
-      <div className="absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent via-white to-white w-full h-full flex justify-center items-center"></div>
+      <div className="absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent via-navy-light to-navy-dark w-full h-full flex justify-center items-center"></div>
       <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full flex justify-center items-center">
-        <button className="hover:underline font-semibold text-green-600 opacity-100">
+        <button className="hover:underline font-semibold text-blue-600 opacity-100">
           Coming Soon in a Week time
         </button>
       </div>

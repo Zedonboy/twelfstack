@@ -58,7 +58,7 @@ export default function SignUp() {
             </span>
           </div>
         </div>
-        <div className="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0 bg-white">
+        <div className="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0 bg-navy-dark">
           <div
             className="hidden lg:block absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center"
             style={{
@@ -73,7 +73,7 @@ export default function SignUp() {
               <Link href="/">
                 <a className="logo-text">TwelfStack</a>
               </Link>
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-300">
                 Sign Up to your account
               </h2>
             </h1>
@@ -91,7 +91,7 @@ export default function SignUp() {
 
             <form
               action
-              className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto mt-8 space-y-6"
+              className="sm:w-2/3 w-full px-4  lg:px-0 mx-auto mt-8 space-y-6"
             >
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px">
@@ -105,8 +105,21 @@ export default function SignUp() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+                    className="appearance-none text-gray-300 bg-navy-light rounded-none relative block w-full px-3 py-2 border border-navy-dark placeholder-gray-500 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
                     placeholder="Email address"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="tel-number" className="sr-only">
+                    Phone Number
+                  </label>
+                  <input
+                    id="tel-number"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    className="appearance-none text-gray-300 bg-navy-light rounded-none relative block w-full px-3 py-2 border border-navy-dark placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+                    placeholder="Phone Number(optional)"
                   />
                 </div>
                 <div>
@@ -119,7 +132,7 @@ export default function SignUp() {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+                    className="appearance-none text-gray-300 bg-navy-light rounded-none relative block w-full px-3 py-2 border border-navy-dark placeholder-gray-500 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
                     placeholder="Password"
                   />
                 </div>
@@ -135,7 +148,7 @@ export default function SignUp() {
                   />
                   <label
                     htmlFor="remember_me"
-                    className="ml-2 block text-sm text-gray-900"
+                    className="ml-2 block text-sm text-gray-300"
                   >
                     Remember me
                   </label>
@@ -151,8 +164,8 @@ export default function SignUp() {
                   Sign Up
                 </button>
               </div>
-              <div className="text-sm">
-                Already have an account?
+              <div className="text-sm text-gray-300">
+                Already have an account?&nbsp;&nbsp;&nbsp;
                 <Link href="/signin">
                   <a
                     

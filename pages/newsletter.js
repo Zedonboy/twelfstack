@@ -1,33 +1,33 @@
 import React from "react";
 import ComingSoon from "../components/ComingSoon";
 import Footer from "../components/Footer";
+import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import Stack from "../components/Stack";
 
 let angle = [1, 2, 3];
 export default function NewsLetterPage() {
   return (
-    <>
-      <NavBar />
+    <Layout>
       <section className="px-2 lg:px-12">
         <div className="w-full flex flex-col items-center justify-center">
-          <div className="relative w-full h-36 bg-white rounded-lg shadow-lg mb-16">
-            <div className="absolute inset-0 rounded-lg overflow-hidden bg-red-200">
+          <div className="relative w-full h-36 bg-navy-dark mb-16">
+            {/* <div className="absolute inset-0 rounded-lg overflow-hidden bg-red-200">
               <img
                 className="w-full object-cover h-full lg:h-auto"
                 src="https://images.unsplash.com/photo-1543794327-59a91fb815d1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=200&q=80"
                 alt=""
               />
               <div className="absolute inset-0 backdrop backdrop-blur-10 bg-gradient-to-b from-transparent to-black"></div>
-            </div>
-            <div className="absolute flex space-x-6 transform translate-x-6 translate-y-8">
+            </div> */}
+            <div className="flex space-x-6 transform translate-x-6 translate-y-8">
               <div className="w-36 h-36 rounded-lg shadow-lg overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1543794327-59a91fb815d1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80"
                   alt=""
                 />
               </div>
-              <div className="text-white pt-12">
+              <div className="text-white">
                 <h3 className="font-bold">Erica Nlewedim</h3>
                 <div className="text-sm opacity-60">BBN Star</div>
                 <div className="mt-8 text-gray-400">
@@ -48,31 +48,29 @@ export default function NewsLetterPage() {
         </div>
       </section>
       <section className="p-6 lg:px-12 flex flex-col justify-center items-center">
-        <p className="text-xl border border-gray-600 py-2 px-4 text-center text-gray-800 font-bold">
-          3/12 Stacks
-        </p>
+       
         <section className="flex mt-8 flex-wrap">
           {angle.map((v) => (
             <div className="w-full p-2 lg:w-1/3">
               <Stack />
             </div>
           ))}
-          <div className="w-full p-2 lg:w-1/3">
+          {/* <div className="w-full p-2 lg:w-1/3">
             <ComingSoon />
-          </div>
+          </div> */}
         </section>
       </section>
       <section className="mt-10">
-        <div className="w-full bg-white px-5 text-gray-800 font-light">
+        <div className="w-full bg-navy-dark px-5 text-gray-800 font-light">
           <div className="w-full max-w-6xl mx-auto pb-5">
             <div className="-mx-3 md:flex items-center">
               <div className="px-3 md:w-2/3 mb-10 md:mb-0">
-                <h1 className="text-6xl md:text-8xl font-bold mb-5 leading-tight">
+                <h1 className="text-6xl md:text-8xl text-gray-300 font-bold mb-5 leading-tight">
                   Stay <br className="hidden md:block" />
                   updated.
                 </h1>
-                <h3 className="text-gray-600 mb-7 leading-tight">
-                  Subscribe now and receive update from Erica
+                <h3 className="text-gray-300 mb-7 leading-tight">
+                  Subscribe now to read Erica
                 </h3>
                 <div>
                   <span className="inline-block w-40 h-1 rounded-full bg-green-500" />
@@ -101,7 +99,7 @@ export default function NewsLetterPage() {
                     </div>
                     <input
                       type="email"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-green-500"
+                      className="w-full bg-navy-light text-gray-300 -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-navy-light outline-none focus:border-green-500"
                       placeholder="email@example.com"
                     />
                   </div>
@@ -116,7 +114,6 @@ export default function NewsLetterPage() {
           </div>
         </div>
       </section>
-      <Footer />
-    </>
+    </Layout>
   );
 }

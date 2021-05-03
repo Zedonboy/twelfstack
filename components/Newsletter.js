@@ -14,7 +14,7 @@ export default function Newsletter() {
           </p>
         </div>
       </div>
-      <div className="flex items-center justify-center pb-6 md:py-0 md:w-1/2 md:border-b-8 border-green-700">
+      <div className="flex bg-navy-light items-center justify-center pb-6 md:py-0 md:w-1/2 md:border-b-8 border-green-700">
         <form>
           <div className="flex flex-col rounded-lg overflow-hidden sm:flex-row">
             <input

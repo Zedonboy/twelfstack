@@ -5,6 +5,8 @@ import Hero from "../components/Hero";
 import Newsletter from "../components/Newsletter";
 import TestimonialSection from "../components/TestimonialSection";
 import Head from "next/head"
+import NavBar from "../components/NavBar";
+import Layout from "../components/Layout";
 const angle = [
   {
     name: "Erica Nlewedim",
@@ -34,13 +36,41 @@ const angle = [
     desc: "Developer himself 🥳",
     verified: true,
   },
+  {
+    name: "Declan Nnadozie",
+    photo:
+      "https://pbs.twimg.com/profile_images/1359636165469614082/tZaML7rE_400x400.jpg",
+    desc: "Developer himself 🥳",
+    verified: true,
+  },
+  {
+    name: "Declan Nnadozie",
+    photo:
+      "https://pbs.twimg.com/profile_images/1359636165469614082/tZaML7rE_400x400.jpg",
+    desc: "Developer himself 🥳",
+    verified: true,
+  },
+  {
+    name: "Declan Nnadozie",
+    photo:
+      "https://pbs.twimg.com/profile_images/1359636165469614082/tZaML7rE_400x400.jpg",
+    desc: "Developer himself 🥳",
+    verified: true,
+  },
+  {
+    name: "Declan Nnadozie",
+    photo:
+      "https://pbs.twimg.com/profile_images/1359636165469614082/tZaML7rE_400x400.jpg",
+    desc: "Developer himself 🥳",
+    verified: true,
+  },
 ];
 
 export default function Index() {
   return (
-    <section>
+    <Layout className="bg-navy-dark">
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
@@ -66,17 +96,20 @@ export default function Index() {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#10B981" />
       </Head>
-      <Hero />
-      <section className="bg-white flex flex-col dark:bg-gray-800 px-4 lg:px-9 mt-10">
-        <h1 className="text-2xl text-center tracking-tight font-bold text-gray-900 sm:text-3xl md:text-4xl">
-          <span className="block xl:inline">
-            Listen to.&nbsp;Read from.&nbsp;Vibe to.&nbsp;
-          </span>{" "}
-          <span className="block text-green-600">your Faves</span>
-        </h1>
-        <section className="flex flex-wrap">
+      <section className="h-40 lg:h-80 w-full relative">
+          <section className="w-full h-full flex flex-col justify-center">
+            <h1 className="text-gray-300 text-center text-4xl font-semibold">Create, subscribe and</h1>
+            <h1 className="text-gray-300 text-center text-4xl font-semibold">manage any newsletter</h1>
+            <h1 className="text-gray-300 text-center text-4xl font-semibold">of your choice</h1>
+          </section>
+        </section>
+        <section className="bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
+          <h1 className="text-gray-200 font-bold text-3xl">Bussiness</h1>
+        <section style={{
+          scrollbarWidth: "none"
+        }} className="flex space-x-4 overflow-x-auto">
           {angle.map((v, i) => (
-            <div key={i} className="p-2 w-full md:w-1/5">
+            <div key={i} className="w-full flex-shrink-0 md:w-1/5">
               <AuthorCard data={v} />
             </div>
           ))}
@@ -90,11 +123,57 @@ export default function Index() {
           </a>
         </div>
       </section>
+      <section className="bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
+          <h1 className="text-gray-200 font-bold text-3xl">Entertainment</h1>
+        <section style={{
+          scrollbarWidth: "none"
+        }} className="flex space-x-4 overflow-x-auto">
+          {angle.map((v, i) => (
+            <div key={i} className="w-full flex-shrink-0 md:w-1/5">
+              <AuthorCard data={v} />
+            </div>
+          ))}
+        </section>
+        <div className="flex justify-center items-center">
+          <a
+            href="/reads"
+            className="p-2 mt-4 text-green-300 hover:text-green-600 border border-green-300 hover:border-green-600 rounded flex items-center justify-center"
+          >
+            More
+          </a>
+        </div>
+      </section>
+      <section className="bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
+          <h1 className="text-gray-200 font-bold text-3xl">Free to read</h1>
+        <section style={{
+          scrollbarWidth: "none"
+        }} className="flex space-x-4 overflow-x-auto">
+          {angle.map((v, i) => (
+            <div key={i} className="w-full flex-shrink-0 md:w-1/5">
+              <AuthorCard data={v} />
+            </div>
+          ))}
+        </section>
+        <div className="flex justify-center items-center">
+          <a
+            href="/reads"
+            className="p-2 mt-4 text-green-300 hover:text-green-600 border border-green-300 hover:border-green-600 rounded flex items-center justify-center"
+          >
+            More
+          </a>
+        </div>
+      </section>
+
+      <section className="bg-blue-500 p-12 mt-4">
+        <p className="text-gray-300 text-4xl font-bold">Join our team today</p>
+        <p className="text-gray-300 text-4xl font-bold">and become one of the</p>
+        <p className="text-gray-300 text-4xl font-bold">best writers!</p>
+      </section>
       <TestimonialSection />
       <section className="flex justify-center">
         <Newsletter />
       </section>
-      <Footer />
-    </section>
+        
+    </Layout>
   );
 }

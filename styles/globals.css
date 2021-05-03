@@ -6,6 +6,10 @@ p,h1 {
   @apply dark:text-gray-200
 }
 
+nav li .active{
+  @apply bg-blue-500 border-blue-500 text-white
+}
+
 section,main {
   @apply dark:text-gray-200 dark:bg-gray-800;
 }
