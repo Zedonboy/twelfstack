@@ -6,7 +6,7 @@ export default function Layout({children}) {
     return (
         <>
         <NavBar/>
-        <main className="bg-navy-dark m-0 px-4 lg:px-9">
+        <main className="bg-navy-dark px-4 lg:px-9">
             {children}
         </main>
         <Footer/>

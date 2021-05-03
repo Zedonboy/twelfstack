@@ -96,7 +96,7 @@ export default function Index() {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#10B981" />
       </Head>
-      <section className="h-40 lg:h-80 w-full relative">
+      <section className="h-40 lg:h-80 w-full mt-4 relative">
           <section className="w-full h-full flex flex-col justify-center">
             <h1 className="text-gray-300 text-center text-4xl font-semibold">Create, subscribe and</h1>
             <h1 className="text-gray-300 text-center text-4xl font-semibold">manage any newsletter</h1>

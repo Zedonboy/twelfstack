@@ -6,6 +6,9 @@ p,h1 {
   @apply dark:text-gray-200
 }
 
+#__next{
+  @apply bg-navy-dark
+}
 nav li .active{
   @apply bg-blue-500 border-blue-500 text-white
 }
