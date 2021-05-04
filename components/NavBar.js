@@ -13,7 +13,7 @@ export default function NavBar() {
           <Popover>
             {({ open }) => (
               <>
-                <Popover.Button className="border border-green-500 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="border lg:hidden border-green-500 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 text-green-500"
@@ -68,7 +68,7 @@ export default function NavBar() {
           </div>
         </section>
         <div className="border-t-2 border-navy-light" />
-        <ul className="flex overflow-x-scroll py-4 space-x-6">
+        <ul className="flex overflow-x-auto py-4 space-x-6">
           <li className="pr-8 border-r flex-shrink-0 border-gray-500">
             <a
               href="#"

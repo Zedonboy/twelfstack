@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Newsletter() {
   return (
-    <div className="flex flex-col max-w-4xl md:h-56 bg-white rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
+    <div className="flex flex-col max-w-4xl md:h-56 rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
       <div className="md:flex items-center justify-center md:w-1/2 md:bg-green-700">
         <div className="py-6 px-8 md:py-0">
           <h2 className="text-green-700 text-2xl font-bold md:text-green-100">

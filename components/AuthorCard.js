@@ -13,7 +13,7 @@ export default function AuthorCard({ data }) {
       />
       <div className="mt-4 relative flex justify-between">
         <div className="flex flex-col">
-          <p className="font-medium flex items-center text-gray-300 text-xl">
+          <p className="font-medium truncate flex items-center text-gray-300 text-xl">
           {data.name}
           {data.verified ? (
             <span className="ml-2">

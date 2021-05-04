@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Stack() {
   return (
-    <div className="max-w-md h-auto bg-navy-light lg:h-48 w-full lg:flex">
+    <a href="/article" className="max-w-md h-auto bg-navy-light lg:h-48 w-full lg:flex">
       <div
         className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
         style={{
@@ -38,6 +38,6 @@ export default function Stack() {
           </a>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
