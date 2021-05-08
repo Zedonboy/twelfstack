@@ -5,7 +5,7 @@ import {XIcon} from "@heroicons/react/outline"
 export default function NavBar() {
   return (
     <header>
-      <nav className="bg-navy-dark flex-col flex px-8">
+      <nav className="bg-navy-dark flex-col flex px-2">
         <section className="flex justify-between py-4">
           <div>
             <span className="logo-text">TwelfStack</span>
