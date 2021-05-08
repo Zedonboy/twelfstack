@@ -96,11 +96,11 @@ export default function Index() {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#10B981" />
       </Head>
-      <section className="h-40 lg:h-80 w-full mt-4 relative">
+      <section className="h-40 lg:h-80 w-full relative">
           <section className="w-full h-full flex flex-col justify-center">
-            <h1 className="text-gray-300 text-center text-4xl font-semibold">Create, subscribe and</h1>
-            <h1 className="text-gray-300 text-center text-4xl font-semibold">manage any newsletter</h1>
-            <h1 className="text-gray-300 text-center text-4xl font-semibold">of your choice</h1>
+            <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">Create, subscribe and</h1>
+            <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">manage any newsletter</h1>
+            <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">of your choice</h1>
           </section>
         </section>
         <section className="bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
@@ -109,7 +109,7 @@ export default function Index() {
           scrollbarWidth: "none"
         }} className="flex space-x-4 overflow-x-auto">
           {angle.map((v, i) => (
-            <div key={i} className="w-full flex-shrink-0 md:w-1/5">
+            <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
               <AuthorCard data={v} />
             </div>
           ))}
@@ -129,7 +129,7 @@ export default function Index() {
           scrollbarWidth: "none"
         }} className="flex space-x-4 overflow-x-auto">
           {angle.map((v, i) => (
-            <div key={i} className="w-full flex-shrink-0 md:w-1/5">
+            <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
               <AuthorCard data={v} />
             </div>
           ))}
@@ -149,7 +149,7 @@ export default function Index() {
           scrollbarWidth: "none"
         }} className="flex space-x-4 overflow-x-auto">
           {angle.map((v, i) => (
-            <div key={i} className="w-full flex-shrink-0 md:w-1/5">
+            <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
               <AuthorCard data={v} />
             </div>
           ))}

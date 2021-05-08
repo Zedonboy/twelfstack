@@ -6,9 +6,14 @@ p,h1 {
   @apply dark:text-gray-200
 }
 
-#__next{
-  @apply bg-navy-dark
+.db-sidenav .active {
+  @apply border-gray-400 rounded text-blue-500
 }
+
+.db-sidenav li{
+  @apply flex text-gray-500 px-8 py-2 space-x-4
+}
+
 nav li .active{
   @apply bg-blue-500 border-blue-500 text-white
 }

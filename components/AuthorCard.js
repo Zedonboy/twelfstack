@@ -4,16 +4,13 @@ export default function AuthorCard({ data }) {
   return (
     <a href="/newsletter" className="bg-navy-light block w-full border p-2 border-navy-light rounded overflow-hidden my-2">
       <img
-        style={{
-          height: "260px",
-        }}
-        className="w-full"
+        className="w-full h-32 lg:h-56"
         src={data.photo}
         alt={data.name}
       />
       <div className="mt-4 relative flex justify-between">
         <div className="flex flex-col">
-          <p className="font-medium truncate flex items-center text-gray-300 text-xl">
+          <p className="font-medium truncate flex items-center text-gray-300 text-sm lg:text-xl">
           {data.name}
           {data.verified ? (
             <span className="ml-2">
@@ -31,8 +28,8 @@ export default function AuthorCard({ data }) {
               </svg>
             </span> ) : null}
           </p>
-         <p className="text-gray-300 font-light">Business</p>
-         <p className="text-gray-300 font-medium text-sm">New google product</p>
+         <p className="text-gray-300 text-xs lg:text-base font-light">Business</p>
+         <p className="text-gray-300 font-medium text-xs lg:text-sm">New google product</p>
         </div>
         <div className="absolute top-0 right-0 bottom-0 flex flex-col h-full justify-center items-center">
           <svg
