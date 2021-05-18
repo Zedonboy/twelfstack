@@ -1,8 +1,25 @@
+import React, { useCallback, useRef, useState } from "react";
 import { LockClosedIcon } from '@heroicons/react/solid'
 import Link from "next/link"
+import { useRouter } from "next/router";
+import { post } from "../browserUtils/api";
+import { API_HOST } from "../config";
+import Cookie from "universal-cookie"
 export default function SignIn() {
+  const cookieRef = useRef(new Cookie())
+  const [logindetails, setLoginDetails] = useState({})
+  const [submitting, setSubmitting] = useState(false)
+  let [errorMssg, setErrorMssg] = useState(null)
+  const router = useRouter()
+  let cb = useCallback(event => {
+    let nam = event.target.name;
+    let val = event.target.value;
+
+    setLoginDetails({...logindetails, [nam]: val });
+  }, [])
+  
   return (
-    <div className="min-h-screen bg-navy-dark flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-navy-dark flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="w-full flex flex-col items-center">
           <Link href="/">
@@ -11,7 +28,42 @@ export default function SignIn() {
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-300">Sign in to your account</h2>
           
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form onSubmit={e => {
+          setSubmitting(true)
+          post(`${API_HOST}/auth/local`, logindetails).then(r => {
+            if(r.ok){
+              r.json(data => {
+                cookieRef.current.set("jwt", data.jwt, {
+                  path : "/",
+                  secure: true
+                })
+
+                if(router.query["redirect_to"]){
+                  router.push(router.query["redirect_to"])
+                  return
+                }
+
+                if(data.user.role.name === "Author"){
+                  router.push("/dashboard")
+                  return
+                } else {
+                  router.push("/")
+                }
+              })
+            } else {
+              r.json(data => {
+                if(Array.isArray(data.message)){
+                  setErrorMssg(data.message[0].message)
+                } else {
+                  setErrorMssg(data.message)
+                }
+              })
+            }
+          }).finally(() => {
+            setSubmitting(false)
+          })
+          e.preventDefault()
+        }} className="mt-8 space-y-6" action="#" method="POST">
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -20,8 +72,9 @@ export default function SignIn() {
               </label>
               <input
                 id="email-address"
-                name="email"
+                name="identifier"
                 type="email"
+                onChange={cb}
                 autoComplete="email"
                 required
                 className="appearance-none bg-navy-light rounded-none relative block w-full px-3 py-2 border border-navy-dark placeholder-gray-500 text-gray-300 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
@@ -38,13 +91,14 @@ export default function SignIn() {
                 type="password"
                 autoComplete="current-password"
                 required
+                onChange={cb}
                 className="appearance-none bg-navy-light rounded-none relative block w-full px-3 py-2 border border-navy-dark placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
                 id="remember_me"
@@ -62,10 +116,11 @@ export default function SignIn() {
                 Forgot your password?
               </a>
             </div>
-          </div>
+          </div> */}
 
           <div>
             <button
+            disabled={submitting}
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
             >

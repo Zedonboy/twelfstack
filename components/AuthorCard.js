@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 export default function AuthorCard({ data }) {
   return (
-    <a href="/newsletter" className="bg-navy-light block w-full border p-2 border-navy-light rounded overflow-hidden my-2">
+    <a href={`/author/${data.slug}`} className="bg-navy-light block w-full border p-2 border-navy-light rounded overflow-hidden my-2">
       <img
         className="w-full h-32 lg:h-56"
-        src={data.photo}
+        src={data?.profile_photo?.url}
         alt={data.name}
       />
       <div className="mt-4 relative flex justify-between">
@@ -28,10 +28,10 @@ export default function AuthorCard({ data }) {
               </svg>
             </span> ) : null}
           </p>
-         <p className="text-gray-300 text-xs lg:text-base font-light">Business</p>
-         <p className="text-gray-300 font-medium text-xs lg:text-sm">New google product</p>
+         {/* <p className="text-gray-300 text-xs lg:text-base font-light">Business</p>
+         <p className="text-gray-300 font-medium text-xs lg:text-sm">New google product</p> */}
         </div>
-        <div className="absolute top-0 right-0 bottom-0 flex flex-col h-full justify-center items-center">
+        {/* <div className="absolute top-0 right-0 bottom-0 flex flex-col h-full justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 text-gray-500"
@@ -46,7 +46,7 @@ export default function AuthorCard({ data }) {
               d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
             />
           </svg>
-        </div>
+        </div> */}
       </div>
     </a>
   );

@@ -4,9 +4,12 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Newsletter from "../components/Newsletter";
 import TestimonialSection from "../components/TestimonialSection";
-import Head from "next/head"
+import Head from "next/head";
 import NavBar from "../components/NavBar";
+import Cookie from "universal-cookie"
 import Layout from "../components/Layout";
+import { get } from "../browserUtils/api";
+import { API_HOST } from "../config";
 const angle = [
   {
     name: "Erica Nlewedim",
@@ -66,7 +69,7 @@ const angle = [
   },
 ];
 
-export default function Index() {
+export default function Index({ categories }) {
   return (
     <Layout className="bg-navy-dark">
       <Head>
@@ -96,84 +99,79 @@ export default function Index() {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#10B981" />
       </Head>
+      <main className="px-4 lg:px-9 bg-navy-dark">
       <section className="h-40 lg:h-80 w-full relative">
-          <section className="w-full h-full flex flex-col justify-center">
-            <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">Create, subscribe and</h1>
-            <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">manage any newsletter</h1>
-            <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">of your choice</h1>
-          </section>
+        <section className="w-full h-full flex flex-col justify-center">
+          <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">
+            Create, subscribe and
+          </h1>
+          <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">
+            manage any newsletter
+          </h1>
+          <h1 className="text-gray-300 text-center text-xl lg:text-4xl font-semibold">
+            of your choice
+          </h1>
         </section>
+      </section>
+      {categories.map((cat) => (
         <section className="bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
-          <h1 className="text-gray-200 font-bold text-3xl">Bussiness</h1>
-        <section style={{
-          scrollbarWidth: "none"
-        }} className="flex space-x-4 overflow-x-auto">
-          {angle.map((v, i) => (
-            <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
-              <AuthorCard data={v} />
-            </div>
-          ))}
-        </section>
-        <div className="flex justify-center items-center">
-          <a
-            href="/reads"
-            className="p-2 mt-4 text-green-300 hover:text-green-600 border border-green-300 hover:border-green-600 rounded flex items-center justify-center"
+          <h1 className="text-gray-200 font-bold text-3xl">{cat.name}</h1>
+          <section
+            style={{
+              scrollbarWidth: "none",
+            }}
+            className="flex space-x-4 overflow-x-auto"
           >
-            More
-          </a>
-        </div>
-      </section>
-      <section className="bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
-          <h1 className="text-gray-200 font-bold text-3xl">Entertainment</h1>
-        <section style={{
-          scrollbarWidth: "none"
-        }} className="flex space-x-4 overflow-x-auto">
-          {angle.map((v, i) => (
-            <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
-              <AuthorCard data={v} />
-            </div>
-          ))}
+            {cat.stacks.map((v, i) => (
+              <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
+                <AuthorCard data={v.author} />
+              </div>
+            ))}
+          </section>
+          <div className="flex justify-center items-center">
+            <a
+              href="/reads"
+              className="p-2 mt-4 text-green-300 hover:text-green-600 border border-green-300 hover:border-green-600 rounded flex items-center justify-center"
+            >
+              More
+            </a>
+          </div>
         </section>
-        <div className="flex justify-center items-center">
-          <a
-            href="/reads"
-            className="p-2 mt-4 text-green-300 hover:text-green-600 border border-green-300 hover:border-green-600 rounded flex items-center justify-center"
-          >
-            More
-          </a>
-        </div>
-      </section>
-      <section className="bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
-          <h1 className="text-gray-200 font-bold text-3xl">Free to read</h1>
-        <section style={{
-          scrollbarWidth: "none"
-        }} className="flex space-x-4 overflow-x-auto">
-          {angle.map((v, i) => (
-            <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
-              <AuthorCard data={v} />
-            </div>
-          ))}
-        </section>
-        <div className="flex justify-center items-center">
-          <a
-            href="/reads"
-            className="p-2 mt-4 text-green-300 hover:text-green-600 border border-green-300 hover:border-green-600 rounded flex items-center justify-center"
-          >
-            More
-          </a>
-        </div>
-      </section>
+      ))}
 
+      
       <section className="bg-blue-500 p-12 mt-4">
         <p className="text-gray-300 text-4xl font-bold">Join our team today</p>
-        <p className="text-gray-300 text-4xl font-bold">and become one of the</p>
+        <p className="text-gray-300 text-4xl font-bold">
+          and become one of the
+        </p>
         <p className="text-gray-300 text-4xl font-bold">best writers!</p>
       </section>
-      <TestimonialSection />
+      </main>
+      
+      {/* <TestimonialSection />
       <section className="flex justify-center">
         <Newsletter />
-      </section>
-        
+      </section> */}
     </Layout>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  let resp = await get(`${API_HOST}/categories`)
+  let data = await resp.json()
+  let categories = []
+  let cookie = new Cookie(ctx.req.headers.cookie)
+  for (const c of data) {
+    let resp = await get(`${API_HOST}/news-letters?category.id=${c.id}&_limit=10`, cookie.get("jwt"))
+    c.stacks = await resp.json()
+    if(c.stacks.length > 0) categories.push(c)
+  }
+
+  return {
+    props: {
+      categories,
+      authors: []
+    }
+  };
 }

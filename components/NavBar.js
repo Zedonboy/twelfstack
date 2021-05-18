@@ -1,8 +1,13 @@
 /* This example requires Tailwind CSS v2.0+ */
-import React, {Fragment} from "react";
-import { Popover,Transition } from "@headlessui/react";
-import {XIcon} from "@heroicons/react/outline"
-export default function NavBar() {
+import React, { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
+import useSWR from "swr";
+import { API_HOST } from "../config";
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+export default function NavBar({ authors = [] }) {
+  let { data, error } = useSWR(`${API_HOST}/authors?featured=true`, fetcher);
   return (
     <header>
       <nav className="bg-navy-dark flex-col flex px-2">
@@ -108,9 +113,12 @@ export default function NavBar() {
           </div>
         </section>
         <div className="border-t-2 border-navy-light" />
-        <ul style={{
-          scrollbarWidth: "none"
-        }} className="flex overflow-x-auto py-4 space-x-6">
+        <ul
+          style={{
+            scrollbarWidth: "none",
+          }}
+          className="flex overflow-x-auto py-4 space-x-6"
+        >
           <li className="pr-8 border-r flex-shrink-0 border-gray-500">
             <a
               href="#"
@@ -119,30 +127,16 @@ export default function NavBar() {
               Home
             </a>
           </li>
-          <li className="flex-shrink-0">
-            <a
-              href="#"
-              className="border text-gray-400 text-sm hover:border-blue-200 border-blue-600 rounded-full w-24 py-2 px-6"
-            >
-              Funke
-            </a>
-          </li>
-          <li className="flex-shrink-0">
-            <a
-              href="#"
-              className="border text-gray-400 text-sm hover:border-blue-200 border-blue-600 rounded-full w-24 py-2 px-6"
-            >
-              Google
-            </a>
-          </li>
-          <li className="flex-shrink-0">
-            <a
-              href="#"
-              className="border text-gray-400 text-sm hover:border-blue-200 border-blue-600 rounded-full w-24 py-2 px-6"
-            >
-              Don Jazzy
-            </a>
-          </li>
+          {data?.map((v) => (
+            <li className="flex-shrink-0">
+              <a
+                href={`/author/${v.slug}`}
+                className="border text-gray-400 text-sm hover:border-blue-200 border-blue-600 rounded-full w-24 py-2 px-6"
+              >
+                {v.name}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

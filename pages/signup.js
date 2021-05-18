@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
+import Cookie from "universal-cookie";
 import Link from "next/link";
+import { post } from "../browserUtils/api";
+import { API_HOST } from "../config";
 export default function SignUp() {
+  let [regDetail, setRegDetails] = useState(null);
+  let [errorMssg, setErrorMessage] = useState(null);
+  let [submitting, setSubmitting] = useState(false)
+  let cookieRef = useRef(new Cookie());
+  let cb = useCallback((event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    setRegDetails({ ...regDetail, [nam]: val });
+  }, [regDetail]);
+
+  let router = useRouter();
+
   return (
     <div>
       {/* component */}
@@ -59,15 +75,7 @@ export default function SignUp() {
           </div>
         </div>
         <div className="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0 bg-navy-dark">
-          <div
-            className="hidden lg:block absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center"
-            style={{
-              backgroundImage:
-                "url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)",
-            }}
-          >
-            <div className="absolute bg-black opacity-60 inset-0 z-0" />
-          </div>
+         
           <div className="w-full py-6 z-20">
             <h1 className="my-6">
               <Link href="/">
@@ -77,6 +85,12 @@ export default function SignUp() {
                 Sign Up to your account
               </h2>
             </h1>
+            {errorMssg ? (
+              <section className="flex justify-center items-center p-4 rounded border">
+                <p className="text-red-400 text-sm">{errorMssg}</p>
+              </section>
+            ) : null}
+
             {/* <div className="py-6 space-x-2">
               <span className="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">
                 f
@@ -91,6 +105,38 @@ export default function SignUp() {
 
             <form
               action
+              onSubmit={(e) => {
+                setSubmitting(true)
+                post(`${API_HOST}/auth/local/register`, regDetail, null).then(
+                  (r) => {
+                    if (r.ok) {
+                      r.json().then((data) => {
+                        cookieRef.current.set("jwt", data.jwt, {
+                          path: "/",
+                          secure: true,
+                        });
+                        if (router.query["redirect_to"]) {
+                          router.push(router.query["redirect_to"]);
+                          return;
+                        }
+                        router.push("/")
+                      });
+                      // check redirect query
+                      // go to home page
+                    } else {
+                      r.json().then((data) => {
+                        if (Array.isArray(data.message)) {
+                          setErrorMessage(data.message[0].message);
+                        } else setErrorMessage(data.message);
+                      });
+                    }
+                  }
+                ).finally(() => {
+                  setSubmitting(false)
+                });
+
+                e.preventDefault();
+              }}
               className="sm:w-2/3 w-full px-4  lg:px-0 mx-auto mt-8 space-y-6"
             >
               <input type="hidden" name="remember" defaultValue="true" />
@@ -100,6 +146,7 @@ export default function SignUp() {
                     Email address
                   </label>
                   <input
+                    onChange={cb}
                     id="email-address"
                     name="email"
                     type="email"
@@ -111,12 +158,27 @@ export default function SignUp() {
                 </div>
                 <div>
                   <label htmlFor="tel-number" className="sr-only">
+                    Name
+                  </label>
+                  <input
+                    id="tel-number"
+                    name="username"
+                    type="text"
+                    onChange={cb}
+                    autoComplete="username"
+                    className="appearance-none text-gray-300 bg-navy-light rounded-none relative block w-full px-3 py-2 border border-navy-dark placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+                    placeholder="Your Full Name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="tel-number" className="sr-only">
                     Phone Number
                   </label>
                   <input
                     id="tel-number"
                     name="phone"
                     type="tel"
+                    onChange={cb}
                     autoComplete="tel"
                     className="appearance-none text-gray-300 bg-navy-light rounded-none relative block w-full px-3 py-2 border border-navy-dark placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
                     placeholder="Phone Number(optional)"
@@ -130,6 +192,7 @@ export default function SignUp() {
                     id="password"
                     name="password"
                     type="password"
+                    onChange={cb}
                     autoComplete="current-password"
                     required
                     className="appearance-none text-gray-300 bg-navy-light rounded-none relative block w-full px-3 py-2 border border-navy-dark placeholder-gray-500 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
@@ -138,7 +201,7 @@ export default function SignUp() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
+              {/* <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <input
                     id="remember_me"
@@ -153,10 +216,11 @@ export default function SignUp() {
                     Remember me
                   </label>
                 </div>
-              </div>
+              </div> */}
 
               <div>
                 <button
+                disabled={submitting}
                   type="submit"
                   className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
@@ -167,10 +231,7 @@ export default function SignUp() {
               <div className="text-sm text-gray-300">
                 Already have an account?&nbsp;&nbsp;&nbsp;
                 <Link href="/signin">
-                  <a
-                    
-                    className="font-medium text-green-600 hover:text-green-500"
-                  >
+                  <a className="font-medium text-green-600 hover:text-green-500">
                     Sign In
                   </a>
                 </Link>
