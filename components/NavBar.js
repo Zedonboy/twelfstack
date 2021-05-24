@@ -4,13 +4,26 @@ import { Popover, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import useSWR from "swr";
 import { API_HOST } from "../config";
-
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+let data = [
+  {
+    name: "Entertainment",
+    slug: "love",
+  },
+  {
+    name: "Bussiness",
+    slug: "love",
+  },
+  {
+    name: "Education",
+    slug: "love",
+  },
+];
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 export default function NavBar({ authors = [] }) {
-  let { data, error } = useSWR(`${API_HOST}/authors?featured=true`, fetcher);
+  //let { data, error } = useSWR(`${API_HOST}/authors?featured=true`, fetcher);
   return (
     <header>
-      <nav className="bg-navy-dark flex-col flex px-2">
+      <nav className="bg-navy-dark flex-col flex px-2 lg:px-16">
         <section className="flex justify-between py-4">
           <div>
             <span className="logo-text">TwelfStack</span>

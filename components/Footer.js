@@ -3,190 +3,82 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <>
+      <script
+        src="https://kit.fontawesome.com/12eed36e44.js"
+        crossorigin="anonymous"
+      ></script>
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@3.0.6/css/line.css"
       />
-      <footer className="bg-navy-dark pt-10">
-        <div className="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-left">
-          {/* Col-1 */}
-          <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
-            {/* Col Title */}
-            <Link href="/">
-              <a className="logo-text">TwelfStack</a>
-            </Link>
+      <footer className="bg-[#142C5A] px-2 py-2 lg:px-12 lg:py-8  flex flex-wrap">
+        <section className="w-full lg:w-1/2">
+          <div className="w-full lg:w-2/3">
+            <p className="text-white font-bold text-xl">
+              Join our mailing list
+            </p>
+            <p className="text-white font-light mt-3">
+              Get updates on new creators and categories
+            </p>
+            <section className="p-0.5 pl-6 border-gray-500 flex mt-3 border rounded">
+              <input
+                className="bg-transparent text-white subscribe-input outline-none w-full text-lg"
+                placeholder="E-mail address"
+              />
+              <button className="bg-[#0E63F4] hover:bg-[#083788] px-4 py-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-8 w-8 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </button>
+            </section>
+
+            <ul className="flex space-x-6 mt-8 text-[#0E63F4] font-bold">
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/blog">Blog</a>
+              </li>
+              <li>
+                <a href="/contact">Contact Us</a>
+              </li>
+            </ul>
           </div>
-
-          {/* Col-2 */}
-          <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
-            {/* Col Title */}
-            <div className="text-xs uppercase text-gray-400 font-medium mb-6">
-              Core Concepts
-            </div>
-
-            {/* Links */}
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Utility-First
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Responsive Design
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Hover, Focus, & Other States
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Dark Mode
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Adding Base Styles
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Extracting Components
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Adding New Utilities
-            </a>
-          </div>
-
-          {/* Col-3 */}
-          <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
-            {/* Col Title */}
-            <div className="text-xs uppercase text-gray-400 font-medium mb-6">
-              Customization
-            </div>
-
-            {/* Links */}
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Configuration
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Theme Configuration
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Breakpoints
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Customizing Colors
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Customizing Spacing
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Configuring Variants
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Plugins
-            </a>
-          </div>
-
-          {/* Col-3 */}
-          <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
-            {/* Col Title */}
-            <div className="text-xs uppercase text-gray-400 font-medium mb-6">
-              Community
-            </div>
-
-            {/* Links */}
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              GitHub
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Discord
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              Twitter
-            </a>
-            <a
-              href="#"
-              className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700"
-            >
-              YouTube
-            </a>
-          </div>
-        </div>
-
-        {/* Copyright Bar */}
-        <div className="pt-2">
-          <div
-            className="flex pb-5 px-3 m-auto pt-5 
-            border-t border-gray-500 text-gray-400 text-sm 
-            flex-col md:flex-row max-w-6xl"
-          >
-            <div className="mt-2">
-              © Copyright 2021. All Rights Reserved.
-            </div>
-
-            {/* Required Unicons (if you want) */}
-            <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
-              <a href="#" className="w-6 mx-1">
-                <i className="uil uil-facebook-f"></i>
+        </section>
+        <section className="w-full flex items-end justify-center lg:w-1/2">
+          <section>
+            <section className="flex space-x-6">
+              <a href="/fb">
+                <i className="fab text-[#06A8F3] fa-facebook-f"></i>
               </a>
-              <a href="#" className="w-6 mx-1">
-                <i className="uil uil-twitter-alt"></i>
+              <a href="/twitter">
+                <i className="fab text-[#06A8F3] fa-instagram"></i>
               </a>
-              <a href="#" className="w-6 mx-1">
-                <i className="uil uil-youtube"></i>
+              <a href="/instagram">
+                <i className="fab text-[#06A8F3] fa-twitter"></i>
               </a>
-              <a href="#" className="w-6 mx-1">
-                <i className="uil uil-linkedin"></i>
-              </a>
-              <a href="#" className="w-6 mx-1">
-                <i className="uil uil-instagram"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+            </section>
+            <p className="text-white mb-3">Become one of our newsletter creators</p>
+            <button className="mb-4 text-white text-sm px-6 py-2 border rounded border-white">
+              Speak to a staff
+            </button>
+            <p className="text-white mb-4">Want to partner with us?</p>
+            <button className="px-10 rounded py-3 hover:bg-[#083788] text-white text-sm bg-[#0E63F4]">
+              Partner with us
+            </button>
+          </section>
+        </section>
       </footer>
     </>
   );

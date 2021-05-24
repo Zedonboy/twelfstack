@@ -1,61 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Stack({ data }) {
+  
   return (
-    <a
-      href={`/stack/${data.slug}`}
-      className="max-w-md h-auto bg-navy-light lg:h-48 w-full lg:flex"
-    >
-      {data.image ? (
-        <div
-          className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-          style={{
-            backgroundImage: `url("${data.image}")`,
-          }}
-          title="Woman holding a mug"
-        ></div>
-      ) : null}
-
-      <div className="w-full border-r border-b border-l border-navy-light lg:border-l-0 lg:border-t lg:border-grey-light bg-navy-light rounded-b lg:rounded-b-none lg:rounded-r p-2 flex flex-col justify-between leading-normal">
-        <div className="mb-8">
-          {data.premium ? (
-            <p className="text-xs text-gray-300 flex items-center">
+      <a href="/stack/undefined" className="flex py-8">
+        <figure className=" w-1/3 lg:w-1/5 pr-4">
+          <img
+            className="rounded border h-[7rem] border-[#0E63F4] w-full object-cover"
+            src="https://picsum.photos/id/1/400/400"
+          />
+        </figure>
+        <section className=" w-2/3 lg:w-3/5 flex flex-col justify-between">
+          <p className="text-white font-bold text-lg">
+            Erica becomes beautiful
+          </p>
+          <p className="text-white text-sm py-2 truncate">
+            Spreading the love of God. thanks to you my fucking
+            fanssssssssssssssssssssssssssssssssssssdhjchdjshcjdshvjdvdhv
+          </p>
+          <section className="flex space-x-4">
+            <section className="flex items-center text-gray-500 text-xs lg:text-base">
               <svg
-                className="text-gray-300 w-3 h-3 mr-2"
                 xmlns="http://www.w3.org/2000/svg"
+                className="h-3 w-3 lg:h-5 lg:w-5"
                 viewBox="0 0 20 20"
+                fill="currentColor"
               >
-                <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
               </svg>
-              Premium Members only
-            </p>
-          ) : (
-            <p className="text-xs text-gray-300 flex items-center">
+              <p>May 12</p>
+            </section>
+            <section className="flex items-center text-red-500 text-xs lg:text-base">
               <svg
-                className="text-gray-300 w-3 h-3 mr-2"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
+                className="h-3 w-3 lg:h-5 lg:w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
               </svg>
-              Members only
-            </p>
-          )}
-
-          <div className="text-gray-300 mt-2 font-bold text-base mb-2">
-            {data.title}
-          </div>
-          <p className="text-gray-300 text-sm">{data.desc}</p>
-        </div>
-        <div className="flex items-center">
-          <a
-            href={`/stack/${data.slug}`}
-            className="border border-blue-600 text-blue-600 hover:bg-blue-600 focus:bg-blue-800 hover:text-gray-100 focus:text-gray-100 px-4 py-2 font-semibold rounded"
-          >
-            Read
-          </a>
-        </div>
-      </div>
-    </a>
+              <p>200K</p>
+            </section>
+            <section className="flex items-center text-[#0E63F4] text-xs lg:text-base">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-3 w-3 lg:h-5 lg:w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                />
+              </svg>
+              <p>1,002</p>
+            </section>
+          </section>
+        </section>
+      </a>
+      
   );
 }

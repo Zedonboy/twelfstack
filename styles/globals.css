@@ -22,11 +22,61 @@ section,main {
   @apply dark:text-gray-200 dark:bg-gray-800;
 }
 
+.subscribe-input::placeholder {
+  color: white
+}
+
 .logo-text{
   @apply text-green-500 font-extrabold text-3xl;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+.stack{
+  @apply text-white text-center
+}
+
+.stack p{
+  @apply my-8 leading-relaxed
+}
+.stack img{
+  @apply w-full rounded-lg shadow max-h-[55vh] object-cover;
+}
+
+.stack a{
+  @apply text-base font-semibold text-[#0E63F4]
+}
+
+.stack figcaption{
+  @apply font-bold text-lg italic mt-2 mb-8
+}
+
+.stack h1{
+  @apply mt-2 mb-1 text-center font-extrabold text-3xl
+}
+
+.stack h2{
+  @apply mt-2 mb-1 text-center font-extrabold text-2xl
+}
+
+.stack h3{
+  @apply mt-2 mb-1 text-center font-extrabold text-xl
+}
+
+.stack h4{
+  @apply mt-2 mb-1 text-center font-extrabold text-lg
+}
+
+.stack h5{
+  @apply mt-2 mb-1 text-center font-extrabold text-base
+}
+.stack h5{
+  @apply mt-2 mb-1 text-center font-extrabold text-sm
+}
+
+.stack strong {
+  @apply font-extrabold
+}
 html,
 body {
   padding: 0;
