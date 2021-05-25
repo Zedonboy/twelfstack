@@ -9,7 +9,7 @@ import Layout from "../../components/Layout";
 export default function ArticlePage({ stack, author }) {
   return (
     <Layout>
-      <main className="px-2 py-2 lg:py-8 bg-navy-dark lg:px-64">
+      <main className="px-2 py-2 md:py-8 bg-navy-dark md:px-32 lg:px-64">
         <h1 className="font-extrabold text-4xl text-white">Lorem Title of Stack</h1>
         <section className="flex items-center mt-8">
           <figure>
@@ -21,10 +21,10 @@ export default function ArticlePage({ stack, author }) {
           <section className="ml-4 flex flex-col space-y-1">
             <p className="text-white font-semibold text-xl">Erica Nlewidim</p>
             <section className="flex space-x-4">
-              <section className="flex items-center text-gray-500 text-xs lg:text-base">
+              <section className="flex items-center text-gray-500 text-xs md:text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3 lg:h-5 lg:w-5"
+                  className="h-3 w-3 md:h-5 md:w-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -32,10 +32,10 @@ export default function ArticlePage({ stack, author }) {
                 </svg>
                 <p>May 12</p>
               </section>
-              <section className="flex items-center text-red-500 text-xs lg:text-base">
+              <section className="flex items-center text-red-500 text-xs md:text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3 lg:h-5 lg:w-5"
+                  className="h-3 w-3 md:h-5 md:w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -49,10 +49,10 @@ export default function ArticlePage({ stack, author }) {
                 </svg>
                 <p>200K</p>
               </section>
-              <section className="flex items-center text-[#0E63F4] text-xs lg:text-base">
+              <section className="flex items-center text-[#0E63F4] text-xs md:text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3 lg:h-5 lg:w-5"
+                  className="h-3 w-3 md:h-5 md:w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

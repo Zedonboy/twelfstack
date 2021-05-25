@@ -18,12 +18,12 @@ export default function NewsLetterPage({
   let [showSub, setShowSub] = useState(false)
   return (
     <Layout>
-      <main className="px-4 lg:px-64 bg-navy-dark">
+      <main className="px-4 md:px-32 lg:px-64 bg-navy-dark">
         <section className="flex items-center">
           <figure>
-            <img className="object-cover w-12 h-12 lg:w-24 lg:h-24 rounded-full border-4 border-[#0E63F4]" src="https://picsum.photos/id/1/400/400"/>
+            <img className="object-cover w-12 h-12 md:w-24 md:h-24 rounded-full border-4 border-[#0E63F4]" src="https://picsum.photos/id/1/400/400"/>
           </figure>
-          <section className="ml-8 flex flex-col space-y-1">
+          <section className="ml-4 flex flex-col space-y-1">
             <p className="text-white font-semibold text-xl">Erica Nlewidim</p>
             <p className="text-gray-600 text-sm font-light">Celebrity</p>
             <p className="text-white text-sm font-semibold">Erica Nlewidim</p>
@@ -44,8 +44,8 @@ export default function NewsLetterPage({
         </section>
       </main>
       {showSub ? (
-        <section className="fixed flex items-center px-2 lg:px-64 bg-black bg-opacity-50  top-0 bottom-0 right-0 left-0">
-        <section className="w-full h-auto lg:h-[70vh] flex flex-col">
+        <section className="fixed flex items-center px-2 md:px-64 bg-black bg-opacity-50  top-0 bottom-0 right-0 left-0">
+        <section className="w-full h-auto md:h-[70vh] flex flex-col">
           <section>
             <button onClick={e => {
               setShowSub(false)
@@ -70,8 +70,8 @@ export default function NewsLetterPage({
             <h1 className="font-bold text-2xl text-center text-[#0E63F4] pb-4">
               Subscription Plans
             </h1>
-            <section className="flex h-full flex-col lg:flex-row">
-              <section className="w-full lg:w-1/3 rounded-lg mx-2 justify-between border-2 px-6 pb-6 pt-12 flex flex-col border-[#0E63F4]">
+            <section className="flex h-full flex-col md:flex-row">
+              <section className="w-full md:w-1/3 rounded-lg mx-2 justify-between border-2 px-6 pb-6 pt-12 flex flex-col border-[#0E63F4]">
                 <div>
                   <p className="font-bold text-center text-4xl text-[#0E63F4]">
                     N465.00
@@ -88,7 +88,7 @@ export default function NewsLetterPage({
                   Pay
                 </button>
               </section>
-              <section className="w-full lg:w-1/3 rounded-lg mx-2 justify-between border-2 px-6 pb-6 pt-12 flex flex-col border-[#0E63F4]">
+              <section className="w-full md:w-1/3 rounded-lg mx-2 justify-between border-2 px-6 pb-6 pt-12 flex flex-col border-[#0E63F4]">
                 <div>
                   <p className="font-bold text-center text-4xl text-[#0E63F4]">
                     N465.00
@@ -105,7 +105,7 @@ export default function NewsLetterPage({
                   Pay
                 </button>
               </section>
-              <section className="w-full lg:w-1/3 rounded-lg mx-2 justify-between border-2 px-6 pb-6 pt-12 flex flex-col border-[#0E63F4]">
+              <section className="w-full md:w-1/3 rounded-lg mx-2 justify-between border-2 px-6 pb-6 pt-12 flex flex-col border-[#0E63F4]">
                 <div>
                   <p className="font-bold text-center text-4xl text-[#0E63F4]">
                     N465.00

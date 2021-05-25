@@ -23,7 +23,7 @@ export default function NavBar({ authors = [] }) {
   //let { data, error } = useSWR(`${API_HOST}/authors?featured=true`, fetcher);
   return (
     <header>
-      <nav className="bg-navy-dark flex-col flex px-2 lg:px-16">
+      <nav className="bg-navy-dark flex-col flex px-2 md:px-16">
         <section className="flex justify-between py-4">
           <div>
             <span className="logo-text">TwelfStack</span>
@@ -32,7 +32,7 @@ export default function NavBar({ authors = [] }) {
             <Popover>
               {({ open }) => (
                 <>
-                  <Popover.Button className="border lg:hidden border-green-500 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <Popover.Button className="border md:hidden border-green-500 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-green-500"
@@ -93,7 +93,7 @@ export default function NavBar({ authors = [] }) {
             </Popover>
           </div>
 
-          <div className="lg:flex items-center hidden space-x-4">
+          <div className="md:flex items-center hidden space-x-4">
             <div
               style={{ width: "420px" }}
               className="rounded-full flex py-2 px-4 bg-navy-light"

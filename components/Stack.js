@@ -4,13 +4,13 @@ export default function Stack({ data }) {
   
   return (
       <a href="/stack/undefined" className="flex py-8">
-        <figure className=" w-1/3 lg:w-1/5 pr-4">
+        <figure className=" w-1/3 md:w-1/5 pr-4">
           <img
             className="rounded border h-[7rem] border-[#0E63F4] w-full object-cover"
             src="https://picsum.photos/id/1/400/400"
           />
         </figure>
-        <section className=" w-2/3 lg:w-3/5 flex flex-col justify-between">
+        <section className=" w-2/3 md:w-3/5 flex flex-col justify-between">
           <p className="text-white font-bold text-lg">
             Erica becomes beautiful
           </p>
@@ -19,10 +19,10 @@ export default function Stack({ data }) {
             fanssssssssssssssssssssssssssssssssssssdhjchdjshcjdshvjdvdhv
           </p>
           <section className="flex space-x-4">
-            <section className="flex items-center text-gray-500 text-xs lg:text-base">
+            <section className="flex items-center text-gray-500 text-xs md:text-base">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-3 w-3 lg:h-5 lg:w-5"
+                className="h-3 w-3 md:h-5 md:w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -30,10 +30,10 @@ export default function Stack({ data }) {
               </svg>
               <p>May 12</p>
             </section>
-            <section className="flex items-center text-red-500 text-xs lg:text-base">
+            <section className="flex items-center text-red-500 text-xs md:text-base">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-3 w-3 lg:h-5 lg:w-5"
+                className="h-3 w-3 md:h-5 md:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -47,10 +47,10 @@ export default function Stack({ data }) {
               </svg>
               <p>200K</p>
             </section>
-            <section className="flex items-center text-[#0E63F4] text-xs lg:text-base">
+            <section className="flex items-center text-[#0E63F4] text-xs md:text-base">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-3 w-3 lg:h-5 lg:w-5"
+                className="h-3 w-3 md:h-5 md:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

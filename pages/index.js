@@ -103,10 +103,10 @@ export default function Index({ categories, free }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#10B981" />
       </Head>
-      <main className="px-4 pb-10 lg:pb-40 lg:px-9 bg-navy-dark">
-        <section className="h-40 lg:h-80 w-full relative">
+      <main className="px-4 pb-10 md:pb-40 md:px-9 bg-navy-dark">
+        <section className="h-40 md:h-80 w-full relative">
           <section className="w-full h-full flex flex-col justify-center">
-            <h1 className="leading-relaxed text-gray-300 text-center text-xl lg:text-4xl font-semibold">
+            <h1 className="leading-relaxed text-gray-300 text-center text-xl md:text-4xl font-semibold">
               Subscribe to <br />{" "}
               <span className="text-green-500"> Newsletters</span> from your{" "}
               <br />
@@ -133,8 +133,8 @@ export default function Index({ categories, free }) {
           </section>
         ))}
 
-        <section className="bg-[#0E63F4] rounded flex flex-wrap shadow p-2 lg:p-12 mt-4">
-          <section className="w-full lg:w-1/2">
+        <section className="bg-[#0E63F4] rounded flex flex-wrap shadow p-2 md:p-12 mt-4">
+          <section className="w-full md:w-1/2">
             <p className="text-gray-300 text-4xl font-bold">
               Subscribe now to read
             </p>
@@ -143,8 +143,8 @@ export default function Index({ categories, free }) {
               Subscribe
             </button>
           </section>
-          <section className="w-full flex items-end lg:w-1/2">
-            <section className="w-full pl-0 lg:pl-24">
+          <section className="w-full flex items-end md:w-1/2">
+            <section className="w-full pl-0 md:pl-24">
               <p className="text-white mb-4 font-semibold text-lg">
                 join our mailing list
               </p>
