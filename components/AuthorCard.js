@@ -6,11 +6,14 @@ export default function AuthorCard({ data }) {
       href={`/author/${data?.slug}`}
       className="bg-navy-light block w-full border p-2 border-navy-light rounded overflow-hidden my-2"
     >
-      <img
-        className="w-full object-cover h-32 lg:h-56"
-        src={data?.profile_photo?.url}
-        alt={data.name}
-      />
+      <figure className="h-32 overflow-hidden overscroll-none lg:h-56 w-full">
+        <img
+          className="transition-transform transform scale-100 duration-500 ease-in-out hover:scale-110 w-full object-cover h-full"
+          src={data?.profile_photo?.url}
+          alt={data.name}
+        />
+      </figure>
+
       <div className="mt-4 relative flex justify-between">
         <div className="flex flex-col">
           <p className="font-semibold truncate flex items-center text-gray-300 text-sm lg:text-lg">

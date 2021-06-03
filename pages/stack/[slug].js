@@ -100,11 +100,17 @@ export async function getServerSideProps(ctx) {
   // let cookie = new Cookie(ctx.req.headers.cookies)
   // let jwt = cookie.get("jwt")
   // let stackResp = await get(`${API_HOST}/stacks?slug=${ctx.params.slug}`, jwt)
+  // if(!stackResp.ok){
+  //   // redirect logic
+  //   return {
+  //     notFound: true,
+  //   }
+  // }
   // let stack = await stackResp.json()
   return {
     props: {
-      stack: {},
-      author: {},
+      stack: {}, //stack,
+      author: {} //stack.author,
     },
   };
 }
