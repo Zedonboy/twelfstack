@@ -8,9 +8,10 @@ import Head from "next/head";
 import NavBar from "../components/NavBar";
 import Cookie from "universal-cookie";
 import Layout from "../components/Layout";
-import { get } from "../browserUtils/api";
+import { get, post } from "../browserUtils/api";
 import { API_HOST } from "../config";
 import { Transition } from "@headlessui/react";
+import StackAlt from "../components/StackAlt";
 const angle = [
   {
     name: "Erica Nlewedim",
@@ -100,9 +101,10 @@ const scrollRight = (catName = "") => {
   }
 };
 
-export default function Index({ categories, free }) {
+export default function Index({ categories, free, setting }) {
   const [showNews, setShowNews] = useState(false);
-  const [showSection, setShowSection] = useState(false)
+  const [showSection, setShowSection] = useState(false);
+  const [mailListEmail, setMailListEmail] = useState(null);
   useEffect(() => {
     let elm = document.querySelector("#carousel");
     window.flickity = new Flickity(elm, {
@@ -114,8 +116,8 @@ export default function Index({ categories, free }) {
     });
 
     setTimeout(() => {
-      setShowSection(true)
-      setShowNews(true)
+      setShowSection(true);
+      setShowNews(true);
     }, 3000);
   }, []);
   return (
@@ -129,7 +131,7 @@ export default function Index({ categories, free }) {
         />
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
-        <title>TwelfStack</title>
+        <title>{setting?.title}</title>
 
         <link rel="manifest" href="/manifest.json" />
         <link
@@ -157,16 +159,24 @@ export default function Index({ categories, free }) {
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
         <script src="https://unpkg.com/flickity-fade@1/flickity-fade.js"></script>
       </Head>
-      <main className="px-4 pb-10 md:pb-40 md:px-9 bg-navy-dark">
-        <section id="carousel" className="h-40 md:h-80 w-full relative">
-          <section className="w-full h-full flex flex-col items-center justify-center">
+      <main className="px-4 pb-10 md:pb-40 md:px-12 bg-navy-dark">
+        <section style={{
+          backgroundImage: `url(${function(){
+            let url = setting?.hero?.url
+            if(url){
+              if(url?.startsWith("http")) return url
+              else return API_HOST+url
+            } else return null
+          }()})`
+        }} id="carousel" className="h-40 md:h-80 w-full  relative">
+          <section className="w-full h-full flex flex-col bg-navy-dark bg-opacity-60 items-center justify-center">
             <div className="typewriter">
               <h1 className="leading-relaxed text-gray-300 text-center text-xl md:text-4xl font-semibold">
                 Subscribe to your faves
               </h1>
             </div>
           </section>
-          <section className="w-full h-full flex flex-col items-center justify-center">
+          <section className="w-full h-full bg-navy-dark bg-opacity-60 flex flex-col items-center justify-center">
             <div className="typewriter">
               <h1 className="leading-relaxed text-gray-300 text-center text-xl md:text-4xl font-semibold">
                 Open Your mind faves
@@ -226,9 +236,9 @@ export default function Index({ categories, free }) {
               style={{
                 scrollbarWidth: "none",
               }}
-              className="flex space-x-4 overflow-x-auto"
+              className="flex space-x-4 mt-8 overflow-x-auto"
             >
-              {cat.stacks.map((v, i) => (
+              {cat.authors.map((v, i) => (
                 <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
                   <AuthorCard data={v} />
                 </div>
@@ -237,7 +247,7 @@ export default function Index({ categories, free }) {
           </section>
         ))}
 
-        <section className="hidden bg-[#0E63F4] rounded md:flex flex-wrap shadow p-2 md:p-12 mt-4">
+        <section className="hidden bg-[#0E63F4] mt-10 rounded md:flex flex-wrap shadow p-2 md:p-12">
           <section className="w-full md:w-1/2">
             <p className="text-gray-300 text-4xl font-bold">
               Subscribe now to read
@@ -268,13 +278,12 @@ export default function Index({ categories, free }) {
           </section>
         </section>
 
-        {free.map((cat) => (
-          <section className="relative bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
-            <h1 className="text-gray-200 font-bold text-3xl">{cat.name}</h1>
+        <section className="relative bg-navy-dark flex flex-col dark:bg-gray-800 mt-10">
+            <h1 className="text-gray-200 font-bold text-3xl">Free</h1>
             <div className="absolute flex space-x-2 top-0 right-2">
               <button
                 onClick={(e) => {
-                  scrollRight(cat.name);
+                  scrollRight("free");
                 }}
                 className="p-1 border text-[#0E63F4] border-[#0E63F4] rounded-full"
               >
@@ -295,7 +304,7 @@ export default function Index({ categories, free }) {
               </button>
               <button
                 onClick={(e) => {
-                  scrollLeft(cat.name);
+                  scrollLeft("free");
                 }}
                 className="p-1 border text-[#0E63F4] border-[#0E63F4] rounded-full"
               >
@@ -316,40 +325,39 @@ export default function Index({ categories, free }) {
               </button>
             </div>
             <section
-              id={cat.name.toLowerCase().replace(" ", "-").trim()}
+              id="free"
               style={{
                 scrollbarWidth: "none",
               }}
-              className="flex space-x-4 overflow-x-auto"
+              className="flex space-x-4 mt-8 overflow-x-auto"
             >
-              {cat.stacks.map((v, i) => (
+              {free.map((v,i) => (
                 <div key={i} className="w-1/2 flex-shrink-0 md:w-1/5">
-                  <AuthorCard data={v} />
+                  <StackAlt data={v} />
                 </div>
               ))}
             </section>
           </section>
-        ))}
+
       </main>
       {showSection ? (
         <section className="md:hidden fixed p-4 flex items-center justify-center top-0 bottom-0 right-0 left-0 bg-[rgba(0,0,0,0.8)]">
-        <Transition
-          show={showNews}
-          as={Fragment}
-          enter="duration-500 ease-out"
-          enterFrom="opacity-0 scale-0"
-          enterTo="opacity-100 scale-100"
-          leave="duration-100 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-0"
-        >
-          
+          <Transition
+            show={showNews}
+            as={Fragment}
+            enter="duration-500 ease-out"
+            enterFrom="opacity-0 scale-0"
+            enterTo="opacity-100 scale-100"
+            leave="duration-100 ease-in"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-0"
+          >
             <section className="transition-transform transform scale-0 bg-[#0E63F4] rounded md:flex flex-wrap shadow p-2 md:p-12 mt-4">
               <section className="flex justify-end">
                 <button
                   onClick={(e) => {
                     setShowNews(false);
-                    setShowSection(false)
+                    setShowSection(false);
                   }}
                   className="text-white"
                 >
@@ -378,17 +386,34 @@ export default function Index({ categories, free }) {
                 <section className="w-full pl-0 md:pl-24">
                   <section className="bg-[#5E96F7] flex rounded p-1">
                     <input
+                      id="subscribe-input-mobile"
+                      onChange={(e) => {
+                        setMailListEmail(e.target.value);
+                      }}
                       className="subscribe-input px-6 py-2 outline-none text-white bg-transparent w-full"
                       placeholder="Enter Email"
                     />
-                    <button className="bg-blue-100 rounded px-6 py-2 shadow text-navy-dark text-sm font-semibold">
+                    <button
+                      onClick={(e) => {
+                        post("/mail-list-items", {
+                          email: mailListEmail,
+                        }).then((r) => {
+                          if (r.ok) {
+                            alert("You have been added to our mailing list");
+                            setShowNews(false);
+                            setShowSection(false);
+                          }
+                        });
+                      }}
+                      className="bg-blue-100 rounded px-6 py-2 shadow text-navy-dark text-sm font-semibold"
+                    >
                       Proceed
                     </button>
                   </section>
                 </section>
               </section>
             </section>
-        </Transition>
+          </Transition>
         </section>
       ) : null}
     </Layout>
@@ -396,34 +421,36 @@ export default function Index({ categories, free }) {
 }
 
 export async function getServerSideProps(ctx) {
-  // let cats = [];
-  // let free = [];
-  // try {
-  //   let resp = await get(`${API_HOST}/categories`);
-  //   let respCat = await resp.json();
-  //   for (const c of respCat) {
-  //     let _resp = await get(
-  //       `${API_HOST}/news-letters?category.id=${c.id}&_limit=10`
-  //     );
-  //     c.stacks = await _resp.json();
-  //     if (c.stacks.length > 0) cats.push(c);
-  //   }
-  // } catch (err) {
-  //   //
-  // }
-
-  // let freeCat = cats.find((c) => c.name === "Free to read");
-  // if (freeCat) free.push(freeCat);
-
+  let cats = [];
+  let freeStacks = [];
+  let setting
+  try {
+    let resp = await get(`${API_HOST}/categories`);
+    let siteResp = await get(`${API_HOST}/site-setting`)
+    setting = await siteResp.json()
+    let stacksResp = await get(`${API_HOST}/stacks?premium=true`)
+    freeStacks = await stacksResp.json()
+    let authorsResp = await get(`${API_HOST}/authors`)
+    let authors = await authorsResp.json()
+    let respCat = await resp.json();
+    for (const c of respCat){
+      let catAuthors = authors.filter(a => a.category.id === c.id) 
+      c.authors = catAuthors
+      cats.push(c)
+    }
+    
+    
+  } catch (err) {
+    //
+  }
   
+  
+
   return {
     props: {
-      categories: [
-        { name: "Bussiness", stacks: angle },
-        { name: "Entertainment", stacks: angle },
-        { name: "Education", stacks: angle },
-      ],
-      free: [{ name: "Free", stacks: angle }],
+      categories: cats,
+      free: freeStacks,
+      setting
     },
   };
 }

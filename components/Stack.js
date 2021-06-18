@@ -3,22 +3,21 @@ import React, { useState } from "react";
 export default function Stack({ data }) {
   
   return (
-      <a href="/stack/undefined" className="flex py-8">
+      <a href={`/stack/${data.slug}`} className="flex py-8">
         <figure className=" w-1/3 md:w-1/5 pr-4">
           <img
             className="rounded border h-[7rem] border-[#0E63F4] w-full object-cover"
-            src="https://picsum.photos/id/1/400/400"
+            src={`${data?.cover?.url}`}
           />
         </figure>
         <section className=" w-2/3 md:w-3/5 flex flex-col justify-between">
           <p className="text-white font-bold text-lg">
-            Erica becomes beautiful
+            {data.title}
           </p>
           <p className="text-white text-sm py-2 truncate">
-            Spreading the love of God. thanks to you my fucking
-            fanssssssssssssssssssssssssssssssssssssdhjchdjshcjdshvjdvdhv
+            {data.desc}
           </p>
-          <section className="flex space-x-4">
+          {/* <section className="flex space-x-4">
             <section className="flex items-center text-gray-500 text-xs md:text-base">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +63,7 @@ export default function Stack({ data }) {
               </svg>
               <p>1,002</p>
             </section>
-          </section>
+          </section> */}
         </section>
       </a>
       

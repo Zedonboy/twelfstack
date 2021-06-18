@@ -1,49 +1,31 @@
-import React from "react";
-import Link from "next/link";
-import { API_HOST } from "../config";
-export default function AuthorCard({ data }) {
-  return (
-    <a
-      href={`/author/${data?.slug}`}
+export default function StackAlt({data}) {
+    return (
+        <a
+      href={`/stack/${data?.slug}`}
       className="bg-navy-light block w-full border p-2 border-navy-light rounded overflow-hidden my-2"
     >
       <figure className="h-32 overflow-hidden overscroll-none lg:h-56 w-full">
         <img
           className="transition-transform transform scale-100 duration-500 ease-in-out hover:scale-110 w-full object-cover h-full"
           src={function(){
-            let url = data?.profile_photo?.url
+            let url = data?.cover?.url
             if(url){
               if(url?.startsWith("http")) return url
               else return API_HOST+url
             } else return null
-          }()}//{}
-          alt={data.name}
+          }()}//{data?.cover?.url}
+          alt={data.title}
         />
       </figure>
 
       <div className="mt-4 relative flex justify-between">
         <div className="flex flex-col">
           <p className="font-semibold truncate flex items-center text-gray-300 text-sm lg:text-lg">
-            {data.name}
-            {data.verified ? (
-              <span className="ml-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 lg:h-5 lg:w-5"
-                  viewBox="0 0 20 20"
-                  fill="#3B82F6"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-            ) : null}
+            {data.title}
+            
           </p>
           <p className="text-gray-300 text-xs lg:text-base font-light">
-          {data?.title}
+          {/* {data?.desc?.substring(0,)} */}
           </p>
         </div>
         <div className="absolute top-0 right-0 bottom-0 flex flex-col h-full justify-end lg:justify-center items-center">
@@ -62,5 +44,5 @@ export default function AuthorCard({ data }) {
         </div>
       </div>
     </a>
-  );
+    )
 }

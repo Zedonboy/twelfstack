@@ -1,5 +1,5 @@
 import React from "react";
-import { get } from "../../browserUtils/api";
+import { get, post } from "../../browserUtils/api";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import { API_HOST } from "../../config";
@@ -10,17 +10,17 @@ export default function ArticlePage({ stack, author }) {
   return (
     <Layout>
       <main className="px-2 py-2 md:py-8 bg-navy-dark md:px-32 lg:px-64">
-        <h1 className="font-extrabold text-4xl text-white">Lorem Title of Stack</h1>
+        <h1 className="font-extrabold text-4xl text-white">{stack?.title}</h1>
         <section className="flex items-center mt-8">
           <figure>
             <img
               className="rounded-full w-16 h-16 object-cover border-2 border-[#0E63F4]"
-              src="https://picsum.photos/id/1/400/400"
+              src={author?.profile_photo?.url}
             />
           </figure>
           <section className="ml-4 flex flex-col space-y-1">
-            <p className="text-white font-semibold text-xl">Erica Nlewidim</p>
-            <section className="flex space-x-4">
+            <p className="text-white font-semibold text-xl">{author?.name}</p>
+            {/* <section className="flex space-x-4">
               <section className="flex items-center text-gray-500 text-xs md:text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -66,11 +66,14 @@ export default function ArticlePage({ stack, author }) {
                 </svg>
                 <p>1,002</p>
               </section>
-            </section>
+            </section> */}
           </section>
         </section>
-        <article className="stack mt-8">
-          <img src="https://picsum.photos/id/1/400/400"/>
+        <article
+          dangerouslySetInnerHTML={{ __html: stack?.content }}
+          className="stack mt-8"
+        >
+          {/* <img src="https://picsum.photos/id/1/400/400"/>
           <h2>Love ain site</h2>
           <p>
             Elit <a>cjshjvhjks</a>aliqua ipsum deserunt Lorem est eu esse consectetur culpa
@@ -85,11 +88,22 @@ export default function ArticlePage({ stack, author }) {
             exercitation dolore laboris anim. Commodo eiusmod enim cupidatat
             esse consequat mollit sint duis et proident. Minim consectetur duis
             laboris enim.
-          </p>
+          </p> */}
         </article>
         <section className="rounded-lg flex justify-between items-center bg-[#0E63F4] p-12">
-          <p className="text-white font-bold text-3xl">Can't read the post? <br/> Subscribe to start reading</p>
-          <button className="text-navy-dark bg-white rounded px-8 py-3 text-sm font-bold">Subscribe</button>
+          <p className="text-white font-bold text-3xl">
+            Can't read the post? <br /> Subscribe to start reading
+          </p>
+          <button
+            onClick={(e) => {
+              post("/email-subcriptions", {
+                news_letter: stack?.news_letter?.id,
+              });
+            }}
+            className="text-navy-dark bg-white rounded px-8 py-3 text-sm font-bold"
+          >
+            Subscribe
+          </button>
         </section>
       </main>
     </Layout>
@@ -97,20 +111,43 @@ export default function ArticlePage({ stack, author }) {
 }
 
 export async function getServerSideProps(ctx) {
-  // let cookie = new Cookie(ctx.req.headers.cookies)
-  // let jwt = cookie.get("jwt")
-  // let stackResp = await get(`${API_HOST}/stacks?slug=${ctx.params.slug}`, jwt)
-  // if(!stackResp.ok){
-  //   // redirect logic
-  //   return {
-  //     notFound: true,
-  //   }
-  // }
-  // let stack = await stackResp.json()
+  let cookie = new Cookie(ctx.req.headers.cookies);
+  let jwt = cookie.get("jwt");
+  let stack
+  try {
+    if(jwt){
+      let userResp = await get(`${API_HOST}/users/me`, null, jwt);
+      let stackResp = await get(
+        `${API_HOST}/stacks?slug=${ctx.params.slug}`,
+        null,
+        jwt
+      );
+      if (!stackResp.ok) {
+        // redirect logic
+        return {
+          notFound: true,
+        };
+      }
+      if(!userResp.ok){
+        return {
+          redirect : {
+            destination: `/signin?redirect_to=/stacks?slug=${ctx.params.slug}`
+          }
+        }
+      }
+    } else {
+      return {
+        redirect : {
+          destination: `/signin?redirect_to=/stacks?slug=${ctx.params.slug}`
+        }
+      }
+    }
+  } catch (error) {}
+
   return {
     props: {
-      stack: {}, //stack,
-      author: {} //stack.author,
+      stack: stack,
+      author: stack?.author,
     },
   };
 }

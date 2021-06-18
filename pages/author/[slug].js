@@ -21,17 +21,17 @@ export default function NewsLetterPage({
       <main className="px-4 md:px-32 lg:px-64 bg-navy-dark">
         <section className="flex items-center">
           <figure>
-            <img className="object-cover w-12 h-12 md:w-24 md:h-24 rounded-full border-4 border-[#0E63F4]" src="https://picsum.photos/id/1/400/400"/>
+            <img className="object-cover w-12 h-12 md:w-24 md:h-24 rounded-full border-4 border-[#0E63F4]" src={`${author?.profile_photo?.url}`}/>
           </figure>
           <section className="ml-4 flex flex-col space-y-1">
-            <p className="text-white font-semibold text-xl">Erica Nlewidim</p>
-            <p className="text-gray-600 text-sm font-light">Celebrity</p>
-            <p className="text-white text-sm font-semibold">Erica Nlewidim</p>
+            <p className="text-white font-semibold text-xl">{author?.name}</p>
+            <p className="text-gray-600 text-sm font-light">{author?.title}</p>
+            <p className="text-white text-sm font-semibold">{author?.desc}</p>
           </section>
         </section>
         <section className="flex py-8 border-b border-[#0E63F4] flex-col space-y-3">
           <section className="bg-[#1C2E50] p-3 rounded">
-            <p className="text-sm text-white">Hey my Star lovers</p>
+            <p className="text-sm text-white">{author?.status}</p>
           </section>
           <button onClick={e => {
             setShowSub(true)
@@ -39,8 +39,10 @@ export default function NewsLetterPage({
           <button className="border-2 border-[#0E63F4] font-bold hover:border-[#083788] hover:text-[#083788] rounded py-3 text-[#0E63F4]">What would you like to share with me?</button>
         </section>
         <section className="py-8 flex flex-col">
-          <Stack/>
-          <Stack/>
+          {stacks.map(s => {
+            <Stack data={s}/>
+          })}
+         
         </section>
       </main>
       {showSub ? (

@@ -4,23 +4,10 @@ import { Popover, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import useSWR from "swr";
 import { API_HOST } from "../config";
-let data = [
-  {
-    name: "Entertainment",
-    slug: "love",
-  },
-  {
-    name: "Bussiness",
-    slug: "love",
-  },
-  {
-    name: "Education",
-    slug: "love",
-  },
-];
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-export default function NavBar({ authors = [] }) {
-  //let { data, error } = useSWR(`${API_HOST}/authors?featured=true`, fetcher);
+export default function NavBar() {
+  let { data, error } = useSWR(`${API_HOST}/categories`, fetcher);
   return (
     <header>
       <nav className="bg-navy-dark flex-col flex px-2 md:px-16">
