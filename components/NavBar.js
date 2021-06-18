@@ -8,12 +8,23 @@ import { API_HOST } from "../config";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 export default function NavBar() {
   let { data, error } = useSWR(`${API_HOST}/categories`, fetcher);
+  let {setting, error} = useSWR(`${API_HOST}/site-setting`, fetcher)
   return (
     <header>
       <nav className="bg-navy-dark flex-col flex px-2 md:px-16">
         <section className="flex justify-between py-4">
           <div>
-            <span className="logo-text">TwelfStack</span>
+           
+            {setting?.logo?.url ? (
+               <img src={function(){
+                let url = setting?.logo?.url
+                if(url){
+                  if(url?.startsWith("http")) return url
+                  else return API_HOST+url
+                } else return null
+              }()} className="max-h-8"/>
+            ) : (<span className="logo-text">TwelfStack</span>)}
+            
           </div>
           <div>
             <Popover>
