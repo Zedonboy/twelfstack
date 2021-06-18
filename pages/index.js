@@ -129,9 +129,9 @@ export default function Index({ categories, free, setting }) {
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <meta name="description" content="Description" />
+        <meta name="description" content={setting?.desc ?? "description"} />
         <meta name="keywords" content="Keywords" />
-        <title>{setting?.title}</title>
+        <title>{setting?.title ?? "Twelfstack"}</title>
 
         <link rel="manifest" href="/manifest.json" />
         <link
